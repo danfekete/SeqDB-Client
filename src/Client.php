@@ -8,6 +8,7 @@
 namespace voov\SeqDB\Client;
 
 
+use voov\SeqDB\Client\Exceptions\InvalidCommandException;
 use voov\SeqDB\Client\Exceptions\SetException;
 
 class Client
@@ -28,11 +29,15 @@ class Client
 	 * @param $cmd
 	 * @param array|null ...$arguments
 	 * @return string
+	 * @throws Exceptions\ConnectionException
+	 * @throws InvalidCommandException
 	 */
 	protected function command($cmd, ...$arguments)
 	{
 		$argumentList = implode(' ', $arguments);
-		return $this->connection->write("{$cmd} {$argumentList}");
+		$resp = $this->connection->write("{$cmd} {$argumentList}");
+		if(strcmp($resp, "INVALID COMMAND")) throw new InvalidCommandException;
+		return $resp;
 	}
 
 
