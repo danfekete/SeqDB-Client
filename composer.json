@@ -1,0 +1,20 @@
+{
+  "name": "voov/seqdb-client",
+  "description": "SeqDB PHP Client",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Daniel Fekete",
+      "email": "daniel.fekete@voov.hu"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "voov\\SeqDB\\Client\\": "src"
+    }
+  }
+}
